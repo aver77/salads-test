@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 
-const ConfigureImg = ({imgLink, imgAlt}) => {
+const ConfigureCardImg = ({imgLink, imgAlt}) => {
     return (
-        <div className='configure__img'>
+        <div className='configure__img-wrap'>
             <img className='configure__item-img' src={imgLink} alt={imgAlt} />
         </div>
     );
 };
 
-export default memo(ConfigureImg);
+export default memo(ConfigureCardImg);

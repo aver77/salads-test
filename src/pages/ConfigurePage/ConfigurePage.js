@@ -1,6 +1,5 @@
-import React from 'react';
-
-import ConfigureCardSection from './components/ConfigureCardSection';
+import React, { memo } from 'react';
+import ConfigureCardSection from './components/ConfigureCard/ConfigureCardSection';
 import ConfigureTitle from './components/ConfigureTitle';
 
 import './ConfigurePage.scss';
@@ -16,4 +15,4 @@ const ConfigurePage = () => {
     );
 };
 
-export default ConfigurePage;
+export default memo(ConfigurePage);

@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { memo } from 'react';
+import CreatingTitle from './components/CreatingTitle';
+
+import './CreatingPage.scss';
 
 const CreatingPage = () => {
     return (
-        <div>
-            
+        <div className='creating'>
+            <div className='creating__wrapper _container'>
+                <CreatingTitle/>
+            </div>
         </div>
     );
 };
 
-export default CreatingPage;
+export default memo(CreatingPage);

@@ -1,0 +1,16 @@
+@mixin fontSizes($fs, $fw) {
+    font-size: $fs;
+    font-weight: $fw;
+}
+
+.choosing {
+    margin: 120px 0 104px 0;
+    //title
+    &__title-wrap {
+        margin-bottom: 48px;
+        text-align: center;
+    }
+    &__text-title {
+        @include fontSizes(26px, 500);
+    }
+}

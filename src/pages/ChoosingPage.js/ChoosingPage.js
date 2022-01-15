@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { memo } from 'react';
+import ChoosingTitle from './components/ChoosingTitle';
+
+import './ChoosingPage.scss';
 
 const ChoosingPage = () => {
     return (
-        <div>
-            
+        <div className='choosing'>
+            <div className='choosing__wrapper _container'>
+                <ChoosingTitle/>
+            </div>
         </div>
     );
 };
 
-export default ChoosingPage;
+export default memo(ChoosingPage);

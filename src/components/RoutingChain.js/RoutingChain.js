@@ -16,6 +16,8 @@ const RoutingChain = () => {
                     <Route path='/' element={<ConfigurePage/>}/>
                     <Route path='/choosing' element={<ChoosingPage/>}/>
                     <Route path='/creating' element={<CreatingPage/>}/>
+                    <Route path='/basket' element={''}/>
+                    <Route path='/history' element={''}/>
                 </Routes>
             <Footer/>
         </Router>
