@@ -24,8 +24,18 @@ const saladReducer = createSlice({
             state.error = false;
             state.loading = false;
             state.salads = action.payload;
+        },
+        saladChose(state, action) {
+            const id = action.payload;
+            const saladIndex = state.salads.findIndex(item => item._id === id);
+            state.choosedSalads.push(state.salads[saladIndex]);
+            state.salads.splice(saladIndex, 1);
+        },
+        saladAddToCart(state) {
+            state.saladsInBasket.push(state.choosedSalads);
+            state.choosedSalads = [];
         }
     }
 })
-export const {saladsRequested, saladsError, saladsLoaded} = saladReducer.actions;
+export const {saladsRequested, saladsError, saladsLoaded, saladChose, saladAddToCart} = saladReducer.actions;
 export default saladReducer.reducer;

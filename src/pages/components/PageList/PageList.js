@@ -1,7 +1,8 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import PageListTitle from './PageListTitle';
 import PageListBtn from './PageListBtn';
+import ItemModal from '../../../components/modals/ItemModal';
 
 const ChoosingListWrap = styled.div`
     display: grid;
@@ -17,7 +18,14 @@ const ChoosingListItem = styled.div`
     padding: 20px;
 `
 
-const PageList = ({allItems, children}) => {
+const PageList = ({itemChoosingHandler, allItems, children, modalText, modalCartText}) => {
+
+    const [openModal, setOpenModal] = useState(false);
+
+    const openModalHandler = useCallback((value) => {
+        setOpenModal(value);
+    }, []);
+
     return (
         <ChoosingListWrap>
             {
@@ -30,11 +38,12 @@ const PageList = ({allItems, children}) => {
                                     return React.cloneElement(child, {item})
                                 })
                             }
-                            <PageListBtn text="Выбрать"/>
+                            <PageListBtn itemChoosingHandler={itemChoosingHandler} id={item._id} text="Выбрать" openModalHandler={openModalHandler}/>
                         </ChoosingListItem>
                     )
                 })
             }
+            {openModal && <ItemModal openModalHandler={openModalHandler} text={modalText} severity="success" color="#72CC51"/>}
         </ChoosingListWrap>
     );
 };

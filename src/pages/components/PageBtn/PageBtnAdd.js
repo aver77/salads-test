@@ -1,5 +1,6 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import styled from 'styled-components';
+import ItemModal from '../../../components/modals/ItemModal';
 
 const PageBtnWrap = styled.div`
     margin-top: 24px;
@@ -21,11 +22,27 @@ const PageBtnElem = styled.button`
         } 
 `;
 
-const PageBtnAdd = ({text}) => {
+const PageBtnAdd = ({itemAddToCart, text, modalCartText, itemCart}) => {
+    const [openCartModal, setOpenCartModal] = useState(false);
+
+    const openCartModalHandler = useCallback((value) => {
+        setOpenCartModal(value)
+    }, []);
+
+    const clickHandler = () => {
+        if (!!itemCart.length) {
+            openCartModalHandler(true);
+        }
+        itemAddToCart();
+    }
+
     return (
-        <PageBtnWrap>
-            <PageBtnElem className="choosing__btn-elem">{text}</PageBtnElem>
-        </PageBtnWrap>
+        <>
+            <PageBtnWrap>
+                <PageBtnElem onClick={clickHandler}>{text}</PageBtnElem>
+            </PageBtnWrap>
+            {openCartModal && <ItemModal openModalHandler={openCartModalHandler} text={modalCartText} severity="success" color="#72CC51"/>}
+        </>
     );
 };
 

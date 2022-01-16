@@ -24,8 +24,18 @@ const moleculeReducer = createSlice({
             state.error = false;
             state.loading = false;
             state.molecules = action.payload;
+        },
+        moleculeChose(state, action) {
+            const id = action.payload;
+            const moleculeIndex = state.molecules.findIndex(item => item._id === id);
+            state.choosedMolecules.push(state.molecules[moleculeIndex]);
+            state.molecules.splice(moleculeIndex, 1);
+        },
+        moleculeAddToCart(state) {
+            state.moleculesInBasket.push([state.choosedMolecules]);
+            state.choosedMolecules = []
         }
     }
 })
-export const {moleculesRequested, moleculesError, moleculesLoaded} = moleculeReducer.actions;
+export const {moleculesRequested, moleculesError, moleculesLoaded, moleculeChose, moleculeAddToCart} = moleculeReducer.actions;
 export default moleculeReducer.reducer;

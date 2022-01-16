@@ -17,16 +17,23 @@ const PageListBtnElem = styled.button`
     }
 `;
 
-const PageListBtn = ({text}) => {
+const PageListBtn = ({itemChoosingHandler, id, text, openModalHandler}) => {
+
+    const btnClickHandler = () => {
+        openModalHandler(true);
+        itemChoosingHandler(id);
+    }
+
     return (
-        <PageListBtnWrap>
-            <PageListBtnElem 
-                className='choosing__item-btn-elem'
-                // onClick={''}
-            >
-                {text}
-            </PageListBtnElem>
-        </PageListBtnWrap>
+        <>
+            <PageListBtnWrap>
+                <PageListBtnElem 
+                    onClick={btnClickHandler}
+                >
+                    {text}
+                </PageListBtnElem>
+            </PageListBtnWrap>
+        </>
     );
 };
 
