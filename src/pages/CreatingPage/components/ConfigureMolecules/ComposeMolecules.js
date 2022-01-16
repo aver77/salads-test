@@ -1,14 +1,16 @@
 import React, { useMemo, useEffect } from 'react';
 
-import ConfigureMoleculesList from './ConfigureMoleculesList';
+import PageBtnAdd from '../../../components/PageBtn/PageBtnAdd';
+import PageList from '../../../components/PageList/PageList';
 import Loading from '../../../../components/Loading/Loading';
 import Error from '../../../../components/Error/Error';
 
 import MoleculeService from '../../../../services/moleculeService';
 import { useSelector, useDispatch } from 'react-redux';
 import { moleculesRequested, moleculesLoaded, moleculesError } from '../../../../redux/moleculeReducer';
+import ConfigureImg from './ComposeImg';
 
-const ConfigureMolecules = () => {
+const ComposeMolecules = () => {
     const { molecules, error, loading } = useSelector(state => state.moleculeReducer);
     const allMolecules = useMemo(() => molecules, [molecules]);
     const dispatch = useDispatch();
@@ -32,9 +34,12 @@ const ConfigureMolecules = () => {
 
     return (
         <>
-            <ConfigureMoleculesList allMolecules={allMolecules}/>
+            <PageList allItems={allMolecules}>
+                <ConfigureImg/>
+            </PageList>
+            <PageBtnAdd text="Добавить в корзину"/>
         </>
     );
 };
 
-export default ConfigureMolecules;
+export default ComposeMolecules;

@@ -1,17 +1,22 @@
 import React, { memo } from 'react';
-import ChoosingSalad from './components/ChoosingSalad/ChoosingSalad';
-import ChoosingTitle from './components/ChoosingTitle';
+import styled from 'styled-components';
+import ChoosingSalad from './components/ChoosingSalad';
+import PageTitle from '../components/PageTitle/PageTitle';
 
-import './ChoosingPage.scss';
+const ChoosingPageWrap = styled.div`
+    margin: 120px 0 104px 0;
+`;
+const ChoosingPageContainer = styled.div`    
+`;
 
 const ChoosingPage = () => {
     return (
-        <div className='choosing'>
-            <div className='choosing__wrapper _container'>
-                <ChoosingTitle/>
+        <ChoosingPageWrap>
+            <ChoosingPageContainer className='_container'>
+                <PageTitle text="Выберите готовые салаты:"/>
                 <ChoosingSalad/>
-            </div>
-        </div>
+            </ChoosingPageContainer>
+        </ChoosingPageWrap>
     );
 };
 

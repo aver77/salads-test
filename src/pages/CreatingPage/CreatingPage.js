@@ -1,17 +1,22 @@
 import React, { memo } from 'react';
-import ConfigureMolecules from './components/ConfigureMolecules/ConfigureMolecules';
-import CreatingTitle from './components/CreatingTitle';
+import styled from 'styled-components';
+import ConfigureMolecules from './components/ConfigureMolecules/ComposeMolecules';
+import PageTitle from '../components/PageTitle/PageTitle';
 
-import './CreatingPage.scss';
+const CreatingPageWrap = styled.div`
+    margin: 120px 0 104px 0;
+`;
+const CreatingPageContainer = styled.div`
+`;
 
 const CreatingPage = () => {
     return (
-        <div className='creating'>
-            <div className='creating__wrapper _container'>
-                <CreatingTitle/>
+        <CreatingPageWrap>
+            <CreatingPageContainer className='_container'>
+                <PageTitle text="Выберите ингредиенты для создания салата:"/>
                 <ConfigureMolecules/>
-            </div>
-        </div>
+            </CreatingPageContainer>
+        </CreatingPageWrap>
     );
 };
 

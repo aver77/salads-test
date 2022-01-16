@@ -1,24 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import HeaderLi from './HeaderLi/HeaderLi';
+import HeaderLiText from './HeaderLi/HeaderLiText';
+import HeaderLiImg from './HeaderLi/HeaderLiImg';
 
-import basketImg from '../../../images/basket.png';
+const HeaderNavItem = styled.nav`
+    width: 300px;
+`;
+const HeaderUl = styled.ul`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+`;
 
 const HeaderNav = () => {
     return (
-        <nav className='header__nav'>
-            <ul className='header__ul'>
-                <li className='header__li'>
-                    <Link to='/history'>
-                        <span className='header__text-li'>Созданные заказы</span>
-                    </Link>
-                </li>
-                <li className='header__li'>
-                    <Link to='basket'>
-                        <img className='header__img-li' src={basketImg} alt="basket" />
-                    </Link>
-                </li>
-            </ul>
-        </nav>
+        <HeaderNavItem>
+            <HeaderUl>
+                <HeaderLi link="history">
+                    <HeaderLiText text="Созданные заказы:"/>
+                </HeaderLi>
+                <HeaderLi link="basket">
+                    <HeaderLiImg/>
+                </HeaderLi>
+            </HeaderUl>
+        </HeaderNavItem>
     );
 };
 

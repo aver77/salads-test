@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo } from 'react';
-
-import SaladService from '../../../../services/saladService';
+import SaladService from '../../../services/saladService';
 import { useDispatch, useSelector } from 'react-redux';
-import { saladsRequested, saladsLoaded, saladsError } from '../../../../redux/saladReducer';
+import { saladsRequested, saladsLoaded, saladsError } from '../../../redux/saladReducer';
 
-import ChoosingSaladList from './components/ChoosingList/ChoosingSaladList';
-import ChoosingSaladAdd from './components/ChoosingSaladAdd';
-import Error from '../../../../components/Error/Error';
-import Loading from '../../../../components/Loading/Loading';
+import ChoosingImg from './ChoosingImg';
+import PageList from '../../components/PageList/PageList';
+import PageBtnAdd from '../../components/PageBtn/PageBtnAdd';
+import Error from '../../../components/Error/Error';
+import Loading from '../../../components/Loading/Loading';
 
 const ChoosingSalad = () => {
     const { salads, error, loading } = useSelector(state => state.saladReducer);
@@ -34,8 +34,10 @@ const ChoosingSalad = () => {
 
     return (
         <>
-            <ChoosingSaladList allSalads={allSalads}/>
-            <ChoosingSaladAdd text="Добавить в корзину"/>
+            <PageList allItems={allSalads}>
+                <ChoosingImg/>
+            </PageList>
+            <PageBtnAdd text="Добавить в корзину"/>
         </>
     );
 };
