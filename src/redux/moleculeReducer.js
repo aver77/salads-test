@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     error: false,
     loading: false,
-    molecules: []
+    molecules: [],
+    choosedMolecules: [],
+    moleculesInBasket: []
 }
 
 const moleculeReducer = createSlice({
@@ -20,7 +22,7 @@ const moleculeReducer = createSlice({
         },
         moleculesLoaded(state, action) {
             state.error = false;
-            state.error = false;
+            state.loading = false;
             state.molecules = action.payload;
         }
     }

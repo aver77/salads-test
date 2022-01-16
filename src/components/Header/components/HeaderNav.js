@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import basketImg from '../../../images/basket.png';
 
@@ -7,10 +8,14 @@ const HeaderNav = () => {
         <nav className='header__nav'>
             <ul className='header__ul'>
                 <li className='header__li'>
-                    <span className='header__text-li'>Созданные заказы</span>
+                    <Link to='/history'>
+                        <span className='header__text-li'>Созданные заказы</span>
+                    </Link>
                 </li>
                 <li className='header__li'>
-                    <img className='header__img-li' src={basketImg} alt="basket" />
+                    <Link to='basket'>
+                        <img className='header__img-li' src={basketImg} alt="basket" />
+                    </Link>
                 </li>
             </ul>
         </nav>

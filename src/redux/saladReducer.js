@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     error: false,
     loading: false,
-    salads: []
+    salads: [],
+    choosedSalads: [],
+    saladsInBasket: []
 }
 
 const saladReducer = createSlice({
@@ -20,7 +22,7 @@ const saladReducer = createSlice({
         },
         saladsLoaded(state, action) {
             state.error = false;
-            state.error = false;
+            state.loading = false;
             state.salads = action.payload;
         }
     }

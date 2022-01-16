@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const ChoosingTitle = () => {
     return (
         <div className='choosing__title-wrap'>
-            <span className='choosing__text-title'>Выберите салат:</span>
+            <span className='choosing__title-text'>Выберите салаты:</span>
         </div>
     );
 };
 
-export default ChoosingTitle;
+export default memo(ChoosingTitle);

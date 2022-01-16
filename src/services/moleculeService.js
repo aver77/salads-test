@@ -5,18 +5,18 @@ class MoleculeService {
         const res = await fetch(`${this._apiBase}${link}`);
 
         if (!res.ok) {
-            console.log(`Couldn't fetch ${this._apiBase}, error: ${res.status}`);
+            throw new Error(`Could not fetch molecules in: ${link} , received ${res.status}`);
         }
 
         return await res.json();
     }
 
     async getAllMolecules() {
-        this.getResourse('/molecules');
+        return await this.getResourse('/molecules');
     }
 
     async getMolecule(id) {
-        this.getResourse(`/molecules/${id}`);
+        return await this.getResourse(`/molecules/${id}`);
     }
 }
 export default MoleculeService

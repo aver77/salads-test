@@ -5,18 +5,18 @@ class SaladService {
         const res = await fetch(`${this._apiBase}${link}`);
 
         if (!res.ok) {
-            console.log(`Couldn't fetch salads in ${this._apiBase}, error: ${res.status}`);
+            throw new Error(`Could not fetch salads in: ${link} , received ${res.status}`);
         }
 
         return await res.json();
     }
 
     async getAllSalads() {
-        this.getResourse('/salads');
+        return await this.getResourse('/salads');
     }
 
     async getSalad(id) {
-        this.getResourse(`/salads/${id}`);
+        return await this.getResourse(`/salads/${id}`);
     }
 
 }
