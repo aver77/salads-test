@@ -11,6 +11,9 @@ const ConfigureSection = styled.div`
     align-items: center;
     flex-wrap: wrap;
     margin: 0 -20px;
+    @media screen and (max-width: 575px) {
+        margin: 0 -10px;
+    }
 `
 
 const ConfigureCardSection = () => {

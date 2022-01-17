@@ -5,9 +5,6 @@ import ItemModal from '../../../components/modals/ItemModal';
 const PageBtnWrap = styled.div`
     margin-top: 24px;
     text-align: center;
-    @media screen and (max-width: 575px) {
-        margin-top: 12px;
-    }
 `;
 const PageBtnElem = styled.button`
         margin-top: 18px;
@@ -25,7 +22,7 @@ const PageBtnElem = styled.button`
         } 
 `;
 
-const PageBtnAdd = ({itemAddToCart, text, modalCartText, itemCart}) => {
+const BasketBtn = ({itemAddToCart, text, modalCartText, itemCart}) => {
     const [openCartModal, setOpenCartModal] = useState(false);
 
     const openCartModalHandler = useCallback((value) => {
@@ -49,4 +46,4 @@ const PageBtnAdd = ({itemAddToCart, text, modalCartText, itemCart}) => {
     );
 };
 
-export default memo(PageBtnAdd);
+export default memo(BasketBtn);

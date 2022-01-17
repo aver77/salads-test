@@ -5,6 +5,9 @@ import PageTitle from '../components/PageTitle/PageTitle';
 
 const ChoosingPageWrap = styled.div`
     margin: 120px 0 104px 0;
+    @media screen and (max-width: 575px) {
+        margin: 100px 0 70px 0;
+    }
 `;
 const ChoosingPageContainer = styled.div`    
 `;

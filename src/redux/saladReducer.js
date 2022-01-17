@@ -42,5 +42,5 @@ const saladReducer = createSlice({
         }
     }
 })
-export const {saladsRequested, saladsError, saladsLoaded, saladChose, saladAddToCart} = saladReducer.actions;
+export const {saladsRequested, saladsError, saladsLoaded, saladChose, saladAddToCart, saladOrderComplete} = saladReducer.actions;
 export default saladReducer.reducer;

@@ -13,6 +13,11 @@ const ConfigureCardWrapSection = styled.div`
     padding: 20px;
     text-align: center;
     margin: 20px;
+    @media screen and (max-width: 575px) {
+        margin: 10px;
+        width: 300px;
+        height: 360px;
+    }
 `
 
 const ConfigureCard = ({imgLink, imgAlt, text, linkBtn}) => {

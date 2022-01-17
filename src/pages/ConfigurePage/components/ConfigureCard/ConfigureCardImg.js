@@ -4,6 +4,11 @@ import styled from 'styled-components';
 const ConfigureImgWrap = styled.div`
     width: 500px;
     height: 400px;
+    @media screen and (max-width: 575px) {
+        margin: 10px;
+        width: 240px;
+        height: 220px;
+    }
 `;
 const ConfigureImg = styled.img`
     width: 100%;

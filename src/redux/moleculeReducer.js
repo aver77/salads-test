@@ -42,5 +42,5 @@ const moleculeReducer = createSlice({
         }
     }
 })
-export const {moleculesRequested, moleculesError, moleculesLoaded, moleculeChose, moleculeAddToCart} = moleculeReducer.actions;
+export const {moleculesRequested, moleculesError, moleculesLoaded, moleculeChose, moleculeAddToCart, moleculeOrderComplete} = moleculeReducer.actions;
 export default moleculeReducer.reducer;
