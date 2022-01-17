@@ -34,12 +34,10 @@ const PageBtnAdd = ({itemAddToCart, text, modalCartText, itemCart = null}) => {
 
     const clickHandler = () => {
         if (itemCart && !!itemCart.length) {
+            console.log('modal')
             openCartModalHandler(true);
+            itemAddToCart();
         }
-        if (itemCart === null) {
-            openCartModalHandler(true);
-        }
-        itemAddToCart();
     }
 
     return (

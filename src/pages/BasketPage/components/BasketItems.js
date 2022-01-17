@@ -11,7 +11,6 @@ const BasketItemsWrap = styled.div`
 `;
 
 const BasketItems = () => {
-    
     return (
         <BasketItemsWrap>
             <BasketMoleculeList/>
