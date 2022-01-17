@@ -19,6 +19,8 @@ const BasketMoleculeListItem = styled.div`
     background: #F4E5AC;
     padding: 20px;
 `;
+const BasketMoleculeListWrap = styled.div`
+`;
 const BasketMoleculeText = styled.p`
     margin-top: 20px;
     font-size: 17px;
@@ -40,9 +42,9 @@ const BasketMoleculeList = () => {
                                 item.map((elem, index) => {
                                     allsost += elem.title + '; ';
                                     return (
-                                        <>
-                                            {index === item.length - 1? <BasketMoleculeText key={elem._id}>Состав: {allsost}</BasketMoleculeText>:null}
-                                        </>   
+                                        <BasketMoleculeListWrap key={elem._id}>
+                                            {index === item.length - 1? <BasketMoleculeText>Состав: {allsost}</BasketMoleculeText>:null}
+                                        </BasketMoleculeListWrap>   
                                     )
                                 })
                             }

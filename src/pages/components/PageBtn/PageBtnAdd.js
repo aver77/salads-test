@@ -25,7 +25,7 @@ const PageBtnElem = styled.button`
         } 
 `;
 
-const PageBtnAdd = ({itemAddToCart, text, modalCartText, itemCart}) => {
+const PageBtnAdd = ({itemAddToCart, text, modalCartText, itemCart = null}) => {
     const [openCartModal, setOpenCartModal] = useState(false);
 
     const openCartModalHandler = useCallback((value) => {
@@ -33,7 +33,10 @@ const PageBtnAdd = ({itemAddToCart, text, modalCartText, itemCart}) => {
     }, []);
 
     const clickHandler = () => {
-        if (!!itemCart.length) {
+        if (itemCart && !!itemCart.length) {
+            openCartModalHandler(true);
+        }
+        if (itemCart === null) {
             openCartModalHandler(true);
         }
         itemAddToCart();
