@@ -7,10 +7,6 @@ import BasketImg from '../BasketImg';
 import readySalad from '../../../../images/readySalad.png';
 
 const BasketSaladListItem = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 300px;
     height: 320px;
     border: 1px solid rgba(84, 84, 84, 0.4);

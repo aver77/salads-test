@@ -7,10 +7,6 @@ import BasketImg from '../BasketImg';
 import saladIngredients from '../../../../images/saladIngredients.png';
 
 const BasketMoleculeListItem = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 300px;
     height: 360px;
     border: 1px solid rgba(84, 84, 84, 0.4);
