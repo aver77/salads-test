@@ -32,8 +32,13 @@ const saladReducer = createSlice({
             state.salads.splice(saladIndex, 1);
         },
         saladAddToCart(state) {
-            state.saladsInBasket.push(state.choosedSalads);
+            state.saladsInBasket.push(...state.choosedSalads);
             state.choosedSalads = [];
+        },
+        saladOrderComplete(state) {
+            state.salads = [];
+            state.choosedSalads = [];
+            state.saladsInBasket = [];
         }
     }
 })

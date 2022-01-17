@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import ConfigureCardSection from './components/ConfigureCard/ConfigureCardSection';
 import ConfigureTitle from './components/ConfigureTitle';
 
-import './ConfigurePage.scss';
-
 const ConfigurePageWrap = styled.div`
     margin: 120px 0 104px 0;
 `;

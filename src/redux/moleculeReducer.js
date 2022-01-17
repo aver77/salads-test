@@ -32,8 +32,13 @@ const moleculeReducer = createSlice({
             state.molecules.splice(moleculeIndex, 1);
         },
         moleculeAddToCart(state) {
-            state.moleculesInBasket.push([state.choosedMolecules]);
+            state.moleculesInBasket.push(state.choosedMolecules);
             state.choosedMolecules = []
+        },
+        moleculeOrderComplete(state) {
+            state.molecules = [];
+            state.choosedMolecules = [];
+            state.moleculesInBasket = [];
         }
     }
 })

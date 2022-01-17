@@ -18,7 +18,7 @@ const ChoosingListItem = styled.div`
     padding: 20px;
 `
 
-const PageList = ({itemChoosingHandler, allItems, children, modalText, modalCartText}) => {
+const PageList = ({itemChoosingHandler, allItems, children, modalText = null}) => {
 
     const [openModal, setOpenModal] = useState(false);
 
@@ -31,7 +31,7 @@ const PageList = ({itemChoosingHandler, allItems, children, modalText, modalCart
             {
                 allItems.map(item => {
                     return (
-                        <ChoosingListItem key={item._id} className='choosing__item'>
+                        <ChoosingListItem key={item._id}>
                             <PageListTitle title={item.title}/>
                             {
                                 React.Children.map(children, (child) => {
@@ -43,7 +43,7 @@ const PageList = ({itemChoosingHandler, allItems, children, modalText, modalCart
                     )
                 })
             }
-            {openModal && <ItemModal openModalHandler={openModalHandler} text={modalText} severity="success" color="#72CC51"/>}
+            {openModal && modalText && <ItemModal openModalHandler={openModalHandler} text={modalText} severity="success" color="#72CC51"/>}
         </ChoosingListWrap>
     );
 };

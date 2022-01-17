@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const PageListTitleElem = styled.p`
@@ -13,4 +13,4 @@ const PageListTitle = ({title}) => {
     );
 };
 
-export default PageListTitle;
+export default memo(PageListTitle);

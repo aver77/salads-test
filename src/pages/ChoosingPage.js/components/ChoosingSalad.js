@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+// /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useCallback } from 'react';
 import SaladService from '../../../services/saladService';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ import Error from '../../../components/Error/Error';
 import Loading from '../../../components/Loading/Loading';
 
 const ChoosingSalad = () => {
-    const { salads, choosedSalads, error, loading } = useSelector(state => state.saladReducer);
+    const { salads, choosedSalads, saladsInBasket, error, loading } = useSelector(state => state.saladReducer);
     const dispatch = useDispatch();
     const allSalads = useMemo(() => salads, [salads]);
     const allChoosedSalads = useMemo(() => choosedSalads, [choosedSalads])
@@ -24,16 +24,18 @@ const ChoosingSalad = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(saladsRequested())
-        const SS = new SaladService();
-        SS.getAllSalads()
-            .then((res) => {
-                dispatch(saladsLoaded(res.result));
-            })
-            .catch(() => {
-                dispatch(saladsError());
-            })
-    }, []);
+        if (!salads.length && !choosedSalads.length && !saladsInBasket.length) {
+            dispatch(saladsRequested());
+            const SS = new SaladService();
+            SS.getAllSalads()
+                .then((res) => {
+                    dispatch(saladsLoaded(res.result));
+                })
+                .catch(() => {
+                    dispatch(saladsError());
+                })
+        }
+    }, [dispatch, salads.length, choosedSalads.length, saladsInBasket.length]);
 
     if (loading && !error) return <Loading/>
     if (error && !loading) return <Error/>

@@ -1,12 +1,21 @@
 import React, { memo } from 'react';
+import styled from 'styled-components';
 import ConfigureCard from './ConfigureCard';
 
 import readySalad from '../../../../images/readySalad.png';
 import saladIngredients from '../../../../images/saladIngredients.png';
 
+const ConfigureSection = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 -20px;
+`
+
 const ConfigureCardSection = () => {
     return (
-        <div className='configure__section'>
+        <ConfigureSection>
             <ConfigureCard 
                 imgLink={readySalad} 
                 imgAlt="salad" 
@@ -19,7 +28,7 @@ const ConfigureCardSection = () => {
                 text="Составить салат самому:" 
                 linkBtn='/creating'
             />
-        </div>
+        </ConfigureSection>
     );
 };
 

@@ -12,7 +12,7 @@ import { moleculesRequested, moleculesLoaded, moleculesError, moleculeChose, mol
 import ConfigureImg from './ComposeImg';
 
 const ComposeMolecules = () => {
-    const { molecules, choosedMolecules, error, loading } = useSelector(state => state.moleculeReducer);
+    const { molecules, choosedMolecules, moleculesInBasket, error, loading } = useSelector(state => state.moleculeReducer);
     const dispatch = useDispatch();
     const allMolecules = useMemo(() => molecules, [molecules]);
     const allChoosedMolecules = useMemo(() => choosedMolecules, [choosedMolecules])
@@ -26,16 +26,18 @@ const ComposeMolecules = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(moleculesRequested())
-        const MS = new MoleculeService();
-        MS.getAllMolecules()
-            .then((res) => {
-                dispatch(moleculesLoaded(res.result));
-            })
-            .catch(() => {
-                dispatch(moleculesError());
-            })
-    }, []);
+        if (!molecules.length && !choosedMolecules.length && !moleculesInBasket.length) {
+            dispatch(moleculesRequested());
+            const MS = new MoleculeService();
+            MS.getAllMolecules()
+                .then((res) => {
+                    dispatch(moleculesLoaded(res.result));
+                })
+                .catch(() => {
+                    dispatch(moleculesError());
+                })
+        }
+    }, [dispatch, molecules.length, choosedMolecules.length, moleculesInBasket.length]);
 
     if (loading && !error) return <Loading/>
     if (error && !loading) return <Error/>
