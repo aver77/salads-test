@@ -1,7 +1,11 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import BasketMoleculeList from './BasketMoleculeList/BasketMoleculeList';
 import BasketSaladList from './BasketSaladList/BasketSaladList';
+import { moleculeOrderComplete } from '../../../redux/moleculeReducer';
+import { saladOrderComplete } from '../../../redux/saladReducer';
+import PageBtnAdd from '../../components/PageBtn/PageBtnAdd';
 
 const BasketItemsWrap = styled.div`
     display: grid;
@@ -11,11 +15,31 @@ const BasketItemsWrap = styled.div`
 `;
 
 const BasketItems = () => {
+    const dispatch = useDispatch();
+    const isEmptyBasketMolecules = useSelector(state => state.moleculeReducer.moleculesInBasket);
+    const isEmptyBasketSalads = useSelector(state => state.saladReducer.saladsInBasket);
+    const allBasket = useMemo(() => {
+        return isEmptyBasketMolecules.length + isEmptyBasketSalads.length
+    },[isEmptyBasketMolecules.length, isEmptyBasketSalads.length]);
+
+    const sendBasketHandler = useCallback(() => {
+        dispatch(moleculeOrderComplete());
+        dispatch(saladOrderComplete());
+    },[dispatch]);
+
     return (
-        <BasketItemsWrap>
-            <BasketMoleculeList/>
-            <BasketSaladList/>
-        </BasketItemsWrap>
+        <>
+            <BasketItemsWrap>
+                <BasketMoleculeList/>
+                <BasketSaladList/>
+            </BasketItemsWrap>
+            <PageBtnAdd
+                    itemAddToCart={sendBasketHandler} 
+                    text="Отправить заказ!" 
+                    modalCartText="Заказ отправлен!"
+                    itemCart={allBasket}
+            />
+        </>
     );
 };
 

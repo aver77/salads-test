@@ -34,7 +34,9 @@ const PageBtnAdd = ({itemAddToCart, text, modalCartText, itemCart = null}) => {
 
     const clickHandler = () => {
         if (itemCart && !!itemCart.length) {
-            console.log('modal')
+            openCartModalHandler(true);
+            itemAddToCart();
+        } else if (itemCart > 0) {
             openCartModalHandler(true);
             itemAddToCart();
         }
